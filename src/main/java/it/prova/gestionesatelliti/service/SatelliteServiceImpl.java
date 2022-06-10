@@ -1,6 +1,7 @@
 package it.prova.gestionesatelliti.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.criteria.Predicate;
@@ -13,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesatelliti.model.Satellite;
 import it.prova.gestionesatelliti.repository.SatelliteRepository;
-@Service
 
+@Service
 public class SatelliteServiceImpl implements SatelliteService {
 
 	@Autowired

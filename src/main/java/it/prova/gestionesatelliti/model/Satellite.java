@@ -38,7 +38,9 @@ public class Satellite {
 	@Column(name = "stato")
 	@Enumerated(EnumType.STRING)
 	private StatoSatellite stato;
-
+	
+	public Satellite() {}
+	
 	public Long getId() {
 		return id;
 	}
