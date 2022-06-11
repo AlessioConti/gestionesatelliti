@@ -23,7 +23,7 @@
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Home</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/satellite/search">Ricerca Satelliti</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/satellite/insert">Inserisci Satellite</a></li>
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/satellite/listAll">Lista Tutti Satelliti</a></li>
+              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/satellite">Lista Tutti Satelliti</a></li>
             </ul> 
           </li>   
         </ul>
