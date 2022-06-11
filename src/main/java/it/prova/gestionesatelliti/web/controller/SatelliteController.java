@@ -95,5 +95,27 @@ public class SatelliteController {
 		
 		return "redirect:/satellite";
 	}
+	
+	@GetMapping("/edit/{idSatellite}")
+	public String edit(@PathVariable(required = true) Long idSatellite, Model model) {
+		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
+		return "satellite/edit";
+	}
+	
+	@PostMapping("/update")
+	public String update(@Valid @ModelAttribute("update_satellite_attr") Satellite satellite, BindingResult result,
+			RedirectAttributes redirectAttrs) {
+		
+		satelliteValidator.validate(satellite, result);
+		
+		if(result.hasErrors()) 
+			return "satellite/edit";
+		
+		satelliteService.aggiorna(satellite);
+		
+		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
+		return "redirect:/satellite";
+		
+	}
 
 }
