@@ -150,5 +150,14 @@ public class SatelliteController {
 		 redirectAttrs.addFlashAttribute("successMessage", "Satellite tornato in orbita con successo!");
 		 return "redirect:/satellite";
 	}
+	
+	@GetMapping("/searchTwoYearsOld")
+	public ModelAndView listSatellitiLanciatiDaOltre2Anni(RedirectAttributes redirectAttrs) {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.trovaSatellitiLanciatiDaAlmeno2Anni();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
 
 }

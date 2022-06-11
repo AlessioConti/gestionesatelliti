@@ -52,7 +52,13 @@
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">Benvenuto alla Gestione Satelliti</h1>
 				        <p class="col-md-8 fs-4">Home Page di Gestione Satelliti </p>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/search">Vai a Ricerca</a>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/search">Vai a Ricerca Satellite</a>
+				        <p class="col-md-8 fs-4">Trova Satelliti lanciati da più di due anni. </p>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/searchTwoYearsOld">Cerca</a>
+				        <p class="col-md-8 fs-4">Trova Satelliti disattivati ma non rientrati. </p>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/searchNotActive">Cerca</a>
+				        <p class="col-md-8 fs-4">Trova Satelliti rimasti in orbita 10 anni e che ora sono fissi. </p>
+				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/satellite/searchTenYearsOld">Cerca</a>
 				      </div>
 			    </div>
 			    
