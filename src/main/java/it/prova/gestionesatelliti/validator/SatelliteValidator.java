@@ -13,13 +13,11 @@ public class SatelliteValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
 		return Satellite.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		// TODO Auto-generated method stub
 		Satellite satellite = (Satellite) target;
 
 		if (satellite.getDataLancio() != null && satellite.getDataRientro() != null

@@ -38,7 +38,7 @@
 		  
 		  		<div class='card'>
 				    <div class='card-header'>
-				        <h5>Lista dei risultati</h5> 
+				        <h5>Lista dei satelliti</h5> 
 				    </div>
 				    <div class='card-body'>
 				    	<a class="btn btn-primary " href="${pageContext.request.contextPath}/satellite/insert">Add New</a>

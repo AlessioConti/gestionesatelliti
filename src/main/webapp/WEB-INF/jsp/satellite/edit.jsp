@@ -13,7 +13,7 @@
 			}
 		</style>
 
-<title>Modifica Elemento</title>
+<title>Modifica Satellite</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   
@@ -48,7 +48,7 @@
 			  
 			  <div class='card'>
 				    <div class='card-header'>
-				        <h5>Modifica elemento</h5> 
+				        <h5>Modifica Satellite</h5> 
 				    </div>
 				    <div class='card-body'>
 		

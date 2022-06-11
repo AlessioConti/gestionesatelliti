@@ -86,95 +86,103 @@ public class SatelliteController {
 		Satellite satelliteRemove = satelliteService.caricaSingoloElemento(idSatellite);
 
 		if (satelliteValidator.removeCheck(satelliteRemove)) {
-			
+
 			satelliteService.rimuovi(satelliteRemove);
 			redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
-			
+
 		} else {
-			
+
 			redirectAttrs.addFlashAttribute("failedMessage", "Operazione fallita, il satellite non è selezionabile");
-			
+
 		}
-		
+
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/edit/{idSatellite}")
 	public String edit(@PathVariable(required = true) Long idSatellite, Model model) {
 		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/edit";
 	}
-	
+
 	@PostMapping("/update")
 	public String update(@Valid @ModelAttribute("update_satellite_attr") Satellite satellite, BindingResult result,
 			RedirectAttributes redirectAttrs) {
-		
+
 		satelliteValidator.validate(satellite, result);
-		
-		if(result.hasErrors()) 
+
+		if (result.hasErrors())
 			return "satellite/edit";
-		
+
 		satelliteService.aggiorna(satellite);
-		
+
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
-		
+
 	}
-	
+
 	@PostMapping("/list")
 	public String listByExample(Satellite example, ModelMap model) {
+		
 		List<Satellite> result = satelliteService.findByExample(example);
 		model.addAttribute("satellite_list_attribute", result);
 		return "satellite/list";
 	}
-	
+
 	@GetMapping("/launch/{idSatellite}")
 	public String launch(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
-		
+
 		Satellite satelliteLaunch = satelliteService.caricaSingoloElemento(idSatellite);
 		satelliteLaunch.setDataLancio(new Date());
 		satelliteLaunch.setStato(StatoSatellite.IN_MOVIMENTO);
 		satelliteService.aggiorna(satelliteLaunch);
-		
+
 		redirectAttrs.addFlashAttribute("successMessage", "Satellite lanciato!");
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/retreat/{idSatellite}")
 	public String retreat(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
-		 Satellite satelliteReturn = satelliteService.caricaSingoloElemento(idSatellite);
-		 satelliteReturn.setDataRientro(new Date());
-		 satelliteReturn.setStato(StatoSatellite.DISATTIVATO);
-		 satelliteService.aggiorna(satelliteReturn);
-			
-		 redirectAttrs.addFlashAttribute("successMessage", "Satellite tornato in orbita con successo!");
-		 return "redirect:/satellite";
+		
+		Satellite satelliteReturn = satelliteService.caricaSingoloElemento(idSatellite);
+		satelliteReturn.setDataRientro(new Date());
+		satelliteReturn.setStato(StatoSatellite.DISATTIVATO);
+		satelliteService.aggiorna(satelliteReturn);
+
+		redirectAttrs.addFlashAttribute("successMessage", "Satellite tornato in orbita con successo!");
+		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/searchTwoYearsOld")
 	public ModelAndView listSatellitiLanciatiDaOltre2Anni(RedirectAttributes redirectAttrs) {
+		
 		ModelAndView mv = new ModelAndView();
 		List<Satellite> results = satelliteService.trovaSatellitiLanciatiDaAlmeno2Anni();
 		mv.addObject("satellite_list_attribute", results);
 		mv.setViewName("satellite/list");
+		
 		return mv;
 	}
-	
+
 	@GetMapping("/disableButNotBack")
 	public ModelAndView trovaSatellitiDiasttivatiMaNonRientrati(RedirectAttributes redirectAttrs) {
+		
 		ModelAndView mv = new ModelAndView();
 		List<Satellite> results = satelliteService.trovaSatellitiDisattivatiMaNonRientrati();
 		mv.addObject("satellite_list_attribute", results);
 		mv.setViewName("satellite/list");
+		
 		return mv;
 	}
-	
+
 	@GetMapping("/tenYearsStill")
 	public ModelAndView trovaSatellitiFissiDaAlmeno10Anni(RedirectAttributes redirectAttrs) {
+		
 		ModelAndView mv = new ModelAndView();
 		List<Satellite> results = satelliteService.trovaSatellitiInOrbitaFissaDaAlmeno10Anni();
 		mv.addObject("satellite_list_attribute", results);
 		mv.setViewName("satellite/list");
+		
 		return mv;
 	}
 

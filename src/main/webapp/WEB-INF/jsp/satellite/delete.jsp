@@ -37,7 +37,7 @@
 			  		
 			  		<div class='card'>
 					    <div class='card-header'>
-					        <h5>Elimina satellite selezionato</h5>
+					        <h5>Elimina Satellite Selezionato</h5>
 					    </div>
 					    
 					
@@ -88,7 +88,7 @@
 								<i class='fa fa-chevron-left'></i> Back
 							</a>
 					        <a href="${pageContext.request.contextPath}/satellite/remove/${delete_satellite_attr.id}" class='btn btn-outline-danger' style='width:80px'>
-					            <i class='fa fa-chevron-left'></i> Delete
+					            <i class='fa fa-chevron-left'></i> Cancella
 					        </a>
 					<!-- end card -->
 					</div>	
