@@ -81,5 +81,9 @@ public class SatelliteServiceImpl implements SatelliteService {
 		
 		return repository.findAllByDataLancioBeforeAndStatoNot(annoMenoDue.getTime(), StatoSatellite.DISATTIVATO);
 	}
+	
+	public List<Satellite> trovaSatellitiDisattivatiMaNonRientrati(){
+		return repository.findAllByStatoAndDataRientroIsNull(StatoSatellite.DISATTIVATO);
+	}
 
 }

@@ -159,5 +159,14 @@ public class SatelliteController {
 		mv.setViewName("satellite/list");
 		return mv;
 	}
+	
+	@GetMapping("/disableButNotBack")
+	public ModelAndView trovaSatellitiDiasttivatiMaNonRientrati(RedirectAttributes redirectAttrs) {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.trovaSatellitiDisattivatiMaNonRientrati();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
 
 }
