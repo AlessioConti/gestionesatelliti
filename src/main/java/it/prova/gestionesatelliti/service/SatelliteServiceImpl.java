@@ -85,5 +85,13 @@ public class SatelliteServiceImpl implements SatelliteService {
 	public List<Satellite> trovaSatellitiDisattivatiMaNonRientrati(){
 		return repository.findAllByStatoAndDataRientroIsNull(StatoSatellite.DISATTIVATO);
 	}
+	
+	public List<Satellite> trovaSatellitiInOrbitaFissaDaAlmeno10Anni(){
+		
+		Calendar annoMenoDieci = Calendar.getInstance();
+		annoMenoDieci.add(Calendar.YEAR, -10);
+		
+		return repository.findAllByDataLancioBeforeAndStato(annoMenoDieci.getTime(), StatoSatellite.FISSO);
+	}
 
 }

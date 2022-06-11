@@ -168,5 +168,14 @@ public class SatelliteController {
 		mv.setViewName("satellite/list");
 		return mv;
 	}
+	
+	@GetMapping("/tenYearsStill")
+	public ModelAndView trovaSatellitiFissiDaAlmeno10Anni(RedirectAttributes redirectAttrs) {
+		ModelAndView mv = new ModelAndView();
+		List<Satellite> results = satelliteService.trovaSatellitiInOrbitaFissaDaAlmeno10Anni();
+		mv.addObject("satellite_list_attribute", results);
+		mv.setViewName("satellite/list");
+		return mv;
+	}
 
 }
