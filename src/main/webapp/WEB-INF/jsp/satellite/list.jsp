@@ -58,8 +58,8 @@
 				                <tbody>
 				                	<c:forEach items="${satellite_list_attribute }" var="satelliteItem">
 										<tr>
-											<td>${satelliteItem.nome }</td>
-											<td>${satelliteItem.cognome }</td>
+											<td>${satelliteItem.denominazione }</td>
+											<td>${satelliteItem.codice }</td>
 											<td><fmt:formatDate type = "date" value = "${satelliteItem.dataLancio }" /></td>
 											<td><fmt:formatDate type = "date" value = "${satelliteItem.dataRientro }" /></td>
 											<td>${satelliteItem.stato }</td>
