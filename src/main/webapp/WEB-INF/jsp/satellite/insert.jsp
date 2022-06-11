@@ -101,7 +101,7 @@
 								    <spring:bind path="stato">
 									    <select class="form-select ${status.error ? 'is-invalid' : ''}" id="stato" name="stato" required>
 									    	<option value="" selected> - Selezionare - </option>
-									    	<option value="IN_MOVIMENTO" ${insert_satellite_attr.stato == 'IN_MOVIMENTO'?'selected':''}>IN_MOVIMRNTO</option>
+									    	<option value="IN_MOVIMENTO" ${insert_satellite_attr.stato == 'IN_MOVIMENTO'?'selected':''}>IN_MOVIMENTO</option>
 									      	<option value="FISSO" ${insert_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
 									      	<option value="DISATTIVATO" ${insert_satellite_attr.stato == 'DISATTIVATO'?'selected':''}>DISATTIVATO</option>
 								    	</select>

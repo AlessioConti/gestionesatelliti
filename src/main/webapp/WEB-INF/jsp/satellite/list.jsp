@@ -71,7 +71,7 @@
 													<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/satellite/launch/${satelliteItem.id }">Lancia!</a>
 												</c:if>
 												<c:if test="${satelliteItem.dataLancio != null && satelliteItem.dataRientro == null}">
-													<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/satellite/return/${satelliteItem.id }">Fai tornare</a>
+													<a class="btn  btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/satellite/retreat/${satelliteItem.id }">Fai tornare</a>
 												</c:if>
 											</td>
 										</tr>
@@ -99,6 +99,7 @@
 		
 		<!-- Footer -->
 		<jsp:include page="../footer.jsp" />
+		
 		
 	</body>
 </html>

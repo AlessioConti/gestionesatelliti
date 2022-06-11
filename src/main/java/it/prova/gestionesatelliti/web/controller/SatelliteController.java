@@ -1,5 +1,6 @@
 package it.prova.gestionesatelliti.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.prova.gestionesatelliti.model.Satellite;
+import it.prova.gestionesatelliti.model.StatoSatellite;
 import it.prova.gestionesatelliti.service.SatelliteService;
 import it.prova.gestionesatelliti.validator.SatelliteValidator;
 
@@ -124,6 +126,29 @@ public class SatelliteController {
 		List<Satellite> result = satelliteService.findByExample(example);
 		model.addAttribute("satellite_list_attribute", result);
 		return "satellite/list";
+	}
+	
+	@GetMapping("/launch/{idSatellite}")
+	public String launch(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
+		
+		Satellite satelliteLaunch = satelliteService.caricaSingoloElemento(idSatellite);
+		satelliteLaunch.setDataLancio(new Date());
+		satelliteLaunch.setStato(StatoSatellite.IN_MOVIMENTO);
+		satelliteService.aggiorna(satelliteLaunch);
+		
+		redirectAttrs.addFlashAttribute("successMessage", "Satellite lanciato!");
+		return "redirect:/satellite";
+	}
+	
+	@GetMapping("/retreat/{idSatellite}")
+	public String retreat(@PathVariable(required = true) Long idSatellite, RedirectAttributes redirectAttrs) {
+		 Satellite satelliteReturn = satelliteService.caricaSingoloElemento(idSatellite);
+		 satelliteReturn.setDataRientro(new Date());
+		 satelliteReturn.setStato(StatoSatellite.DISATTIVATO);
+		 satelliteService.aggiorna(satelliteReturn);
+			
+		 redirectAttrs.addFlashAttribute("successMessage", "Satellite tornato in orbita con successo!");
+		 return "redirect:/satellite";
 	}
 
 }
