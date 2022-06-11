@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -116,6 +117,13 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
 		
+	}
+	
+	@PostMapping("/list")
+	public String listByExample(Satellite example, ModelMap model) {
+		List<Satellite> result = satelliteService.findByExample(example);
+		model.addAttribute("satellite_list_attribute", result);
+		return "satellite/list";
 	}
 
 }
