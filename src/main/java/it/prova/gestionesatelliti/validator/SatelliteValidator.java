@@ -50,5 +50,21 @@ public class SatelliteValidator implements Validator {
 		}
 
 	}
+	
+	public boolean removeCheck(Object target) {
+		
+		Satellite satellite = (Satellite) target;
+		
+		if (satellite.getDataLancio() == null) {
+			return true;
+		}
+		
+		if (satellite.getDataRientro() != null && satellite.getStato() == StatoSatellite.DISATTIVATO) {
+			return true;
+		}
+		
+		return false;
+		
+	}
 
 }
